@@ -11,15 +11,18 @@ void main() {
           children: [
             CustomCard(
               name: "OOP",
-              color: const Color.fromARGB(255, 108, 176, 232),
+              start: Colors.blue,
+              end: Colors.blueGrey,
             ),
             CustomCard(
               name: "DART",
-              color: const Color.fromARGB(255, 72, 147, 209),
+              start: Colors.red,
+              end: Colors.redAccent,
             ),
             CustomCard(
               name: "FLUTTER",
-              color: const Color.fromARGB(255, 16, 73, 119),
+               start: Colors.green,
+              end: Colors.greenAccent,
             ),
           ],
         ),
@@ -30,8 +33,9 @@ void main() {
 
 class CustomCard extends StatelessWidget {
   final String name;
-  final Color color;
-  const CustomCard({super.key, required this.name, required this.color});
+  final Color start;
+  final Color end;
+  const CustomCard({super.key, required this.name, required this.start, required this.end});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +45,9 @@ class CustomCard extends StatelessWidget {
       margin: EdgeInsets.symmetric(vertical: 20.0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(50)),
-        color: color,
+        gradient: LinearGradient(colors:[start,end],
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight)
       ),
       child: Center(
         child: Text(
@@ -57,3 +63,4 @@ class CustomCard extends StatelessWidget {
     );
   }
 }
+
